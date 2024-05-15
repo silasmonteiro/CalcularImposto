@@ -7,19 +7,23 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.conversordemoedas.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val editText: EditText = findViewById(R.id.et_valorNota)
-        val txt60: TextView = findViewById(R.id.tv_60)
-        val txt40: TextView = findViewById(R.id.tv_40)
-        val txt5: TextView = findViewById(R.id.tv_5)
-        val txt15: TextView = findViewById(R.id.tv_15)
-        val btCalcular: Button = findViewById(R.id.bt_calcular)
+        val editText = binding.etValorNota
+        val txt60 = binding.tv60
+        val txt40 = binding.tv40
+        val txt5 = binding.tv5
+        val txt15 = binding.tv15
+        val btCalcular = binding.btCalcular
 
         btCalcular.setOnClickListener {
 
@@ -33,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         if(text.isNotEmpty()){
 
         val valor = text.toInt()
+
             txt60.text = (valor * 0.60).toString()
             txt40.text = (valor * 0.40).toString()
             txt5.text = (valor * 0.60 * 0.05).toString()
